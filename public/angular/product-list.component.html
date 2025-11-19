@@ -1,0 +1,36 @@
+<div class="filters">
+  <select [(ngModel)]="filters.category" (change)="fetch()">
+    <option value="">All Categories</option>
+    <option *ngFor="let c of categories" [value]="c">{{c}}</option>
+  </select>
+  <select [(ngModel)]="filters.ingredient" (change)="fetch()">
+    <option value="">Any Ingredient</option>
+    <option *ngFor="let i of ingredients" [value]="i">{{i}}</option>
+  </select>
+  <select [(ngModel)]="filters.sort" (change)="fetch()">
+    <option value="popularity_desc">Popularity</option>
+    <option value="price_asc">Price: Low to High</option>
+    <option value="price_desc">Price: High to Low</option>
+    <option value="name_asc">Name: A-Z</option>
+    <option value="name_desc">Name: Z-A</option>
+  </select>
+  <div class="range">
+    <input type="number" min="0" placeholder="Min" [(ngModel)]="filters.min_price" (change)="fetch()"/>
+    <span>-</span>
+    <input type="number" min="0" placeholder="Max" [(ngModel)]="filters.max_price" (change)="fetch()"/>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card" *ngFor="let p of items">
+    <div class="image"><img [src]="p.image_url" [alt]="p.title" /></div>
+    <div class="body">
+      <h3>{{p.title}}</h3>
+      <p class="desc">{{p.description}}</p>
+      <div class="row">
+        <span class="price">${{p.price.toFixed(2)}}</span>
+        <button class="btn small">Add to cart</button>
+      </div>
+    </div>
+  </div>
+</div>

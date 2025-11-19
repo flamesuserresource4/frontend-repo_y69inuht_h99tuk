@@ -1,0 +1,40 @@
+<header class="header">
+  <div class="container">
+    <a class="logo" routerLink="/">Prakriti</a>
+    <nav class="nav">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/shop" routerLinkActive="active">Shop</a>
+      <a routerLink="/about" routerLinkActive="active">About</a>
+      <a routerLink="/contact" routerLinkActive="active">Contact</a>
+    </nav>
+    <div class="actions">
+      <input type="search" placeholder="Search Ayurvedic skincare" [formControl]="search" />
+      <button aria-label="Cart" class="icon-btn">🛒</button>
+      <button aria-label="Account" class="icon-btn">👤</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="spline-wrap">
+    <!-- In Angular you would use ngx-spline or iframe; placeholder below -->
+    <iframe class="spline" src="https://prod.spline.design/c1w2QYixcPkptHWE/scene.splinecode" title="Hero 3D" loading="lazy"></iframe>
+  </div>
+  <div class="hero-overlay">
+    <div class="hero-card">
+      <p class="eyebrow">Discover Pure Ayurvedic Skincare</p>
+      <h1>Nurture your skin with nature</h1>
+      <p class="sub">Handcrafted blends with saffron, neem, and sandalwood. Clean, conscious, and cruelty-free.</p>
+      <div class="cta-row">
+        <a routerLink="/shop" class="btn primary">Shop now</a>
+        <a routerLink="/about" class="btn">Our philosophy ▼</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="container" id="products">
+  <app-product-list [query]="search.value || ''"></app-product-list>
+</main>
+
+<footer class="footer">© {{year}} Prakriti Ayurveda. All rights reserved.</footer>
